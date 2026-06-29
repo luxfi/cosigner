@@ -1,3 +1,5 @@
+<p align="center"><img src=".github/hero.svg" alt="cosigner" width="880"></p>
+
 # luxfi/cosigner — external-custodian co-signing
 
 `github.com/luxfi/cosigner` is the **single, vendor-neutral co-signing layer**
