@@ -111,8 +111,7 @@ func TestValidate_RejectsSecretFields(t *testing.T) {
 			if err == nil {
 				t.Fatalf("expected error rejecting %q field", badField)
 			}
-			var bad *ErrBadIntent
-			if !errors.As(err, &bad) {
+			if _, ok := errors.AsType[*ErrBadIntent](err); !ok {
 				t.Fatalf("expected ErrBadIntent, got %T: %v", err, err)
 			}
 			if !strings.Contains(err.Error(), badField) {

@@ -396,12 +396,9 @@ func (d *DefaultDispatcher) Dispatch(ctx context.Context, opts DispatchOptions) 
 	results := make([]Result, len(opts.Cosigners))
 	var wg sync.WaitGroup
 	for i, intent := range opts.Cosigners {
-		i, intent := i, intent
-		wg.Add(1)
-		go func() {
-			defer wg.Done()
+		wg.Go(func() {
 			results[i] = d.runOne(ctx, intent, opts)
-		}()
+		})
 	}
 	wg.Wait()
 	return results, nil
